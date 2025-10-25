@@ -29,6 +29,12 @@
                     <li><a href="{% url 'anketa' %}">Анкета</a></li>
                     <li><a href="{% url 'blog' %}">Блог</a></li>
 
+                    {% if user.is_superuser %}
+                    <li><a href="{% url 'newpost' %}">Добавить статью</a></li>
+                    {% endif %}
+
+                    <li><a href="{% url 'videopost' %}">Видео</a></li>
+
                     {% if not user.is_authenticated %}
                     <li><a href="{% url 'registration' %}">Регистрация</a></li>
                     {% endif %}

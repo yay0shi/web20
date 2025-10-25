@@ -2,6 +2,8 @@
 Definition of models.
 """
 
+from email.policy import default
+from tabnanny import verbose
 from django.db import models
 from django.contrib import admin
 from django.contrib.auth.models import User
@@ -16,7 +18,7 @@ class Blog(models.Model):
     description = models.TextField(verbose_name="Краткое содержание")
     content = models.TextField(verbose_name="Полное содержание")
     posted = models.DateTimeField(default=datetime.now(), db_index=True, verbose_name="Опубликована")
-
+    image = models.FileField(default='temp.jpg', verbose_name= "Путь к картинке")
 
     #Методы класса
 

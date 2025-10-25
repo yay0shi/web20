@@ -6,6 +6,9 @@ from datetime import datetime
 from django.urls import path
 from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
+from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf import settings
 from app import forms, views
 
 
@@ -17,6 +20,8 @@ urlpatterns = [
     path('registration/', views.registration, name='registration'),
     path('blog/', views.blog, name='blog'),
     path('blogpost/<int:parametr>/', views.blogpost, name='blogpost'),
+    path('newpost/', views.newpost, name='newpost'),
+    path('videopost/', views.videopost, name='videopost'),
 
     path('login/',
          LoginView.as_view
@@ -34,3 +39,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += staticfiles_urlpatterns()

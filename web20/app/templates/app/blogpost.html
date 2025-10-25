@@ -1,6 +1,11 @@
 {% extends "app/layout.html" %}
 {% block content %}
 <h2>{{post_1.title}}</h2>
+
+{% if post_1.image and post_1.image.url != '/media/temp.jpg' %}
+<img src="{{ post_1.image.url }}" alt="Картинка статьи" width="800" />
+{% endif %}
+
 <p>{{post_1.content|linebreaksbr}}</p>
 
 {% if user.is_authenticated %}

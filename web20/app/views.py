@@ -8,7 +8,7 @@ from django.http import HttpRequest
 from django.contrib.auth.forms import UserCreationForm
 from django.db import models
 from .models import Blog, Comment
-from .forms import  CommentForm
+from .forms import  CommentForm,AnketaForm,BlogForm
 
 
 def registration(request):
@@ -153,5 +153,44 @@ def blogpost (request,parametr):
             'form' : form,
             'year': datetime.now().year,
         }
-        )
+    )
 
+def newpost(request):
+    """Renders the newpost page."""
+    assert isinstance(request, HttpRequest)
+
+    if request.method == "POST":  # после отправки формы
+        blogform = BlogForm(request.POST, request.FILES)
+        if blogform.is_valid():
+            blog_f = blogform.save(commit=False)
+            blog_f.posted = datetime.now()
+            blog_f.author = request.user  # исправлено autor -> author
+            blog_f.save()
+
+            return redirect('blog')  # переадресация на страницу Блог после создания статьи
+
+    else:
+        blogform = BlogForm()  # создание формы для ввода данных
+
+    return render(
+        request,
+        'app/newpost.html',
+        {
+            'blogform': blogform,  # передача формы в шаблон веб-страницы
+            'title': 'Добавить статью блога',  
+            'year': datetime.now().year,
+        }
+    )
+
+def videopost(request):
+    """Renders the videopost page."""
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'app/videopost.html',
+        {
+            'title': 'Видео',  
+            'message': 'Наши видео материалы',
+            'year': datetime.now().year,
+        }
+    )
