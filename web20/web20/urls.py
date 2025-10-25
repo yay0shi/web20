@@ -14,6 +14,10 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('about/', views.about, name='about'),
     path('anketa/', views.anketa, name='anketa'),
+    path('registration/', views.registration, name='registration'),
+    path('blog/', views.blog, name='blog'),
+    path('blogpost/<int:parametr>/', views.blogpost, name='blogpost'),
+
     path('login/',
          LoginView.as_view
          (
@@ -28,5 +32,5 @@ urlpatterns = [
          name='login'),
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
     path('admin/', admin.site.urls),
-    path('registration/', views.registration, name='registration'),
+    
 ]

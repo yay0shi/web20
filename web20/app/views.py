@@ -7,6 +7,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpRequest
 from django.contrib.auth.forms import UserCreationForm
 from .forms import *
+from django.db import models
+from .models import *
 
 def registration(request):
     """Renders the registration page."""
@@ -106,3 +108,33 @@ def anketa(request):
             'data': data
         }
     )
+
+def blog (request):
+    """Renders the blog page."""
+    posts = Blog.objects.all()
+
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'app/blog.html',
+        {
+            'title':'Блог',
+            'posts': posts,
+            'year': datetime.now().year,
+        }
+    )
+
+def blogpost (request,parametr):
+    """Renders the blogpost page."""
+
+    assert isinstance(request, HttpRequest)
+    post_1 = Blog.objects.get(id=parametr)
+    return render(
+        request,
+        'app/blogpost.html',
+        {
+            'post_1':post_1,
+            'year': datetime.now().year,
+        }
+        )
+

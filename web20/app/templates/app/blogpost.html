@@ -1,0 +1,6 @@
+{% extends "app/layout.html" %}
+{% block content %}
+<h2>{{post_1.title}}</h2>
+<p>{{post_1.content|linebreaksbr}}</p>
+<p><a href="{% url 'blog' %}">Назад</a></p>
+{%endblock%}
