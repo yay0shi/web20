@@ -1,6 +1,9 @@
 ﻿"""
 Definition of forms.
 """
+from django.db import models
+from.models import Comment
+
 
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
@@ -26,4 +29,9 @@ class AnketaForm(forms.Form):
     notice = forms.BooleanField(label='Получать новости сайта на e-mail?', required=False)
     email = forms.EmailField(label='Ваше e-mail', min_length=7,)
     message = forms.CharField(label='Коротко о себе', widget=forms.Textarea(attrs={'rows':12,'cols':20}))
-    
+   
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('text',)
+        labels = {'text' : "Комментарий"}

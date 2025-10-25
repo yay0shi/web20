@@ -2,5 +2,28 @@
 {% block content %}
 <h2>{{post_1.title}}</h2>
 <p>{{post_1.content|linebreaksbr}}</p>
+
+{% if user.is_authenticated %}
+<h3>Добавить комментарий</h3>
+<form method="POST">
+    {% csrf_token %}    {# защита от атак CSRF #}
+    <div>
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Отправить комментарий</button>
+    </div>
+</form>
+{% else %}
+<h3>Чтобы оставить комментарий, Войдите или Зарегистрируйтесь</h3>
+{% endif %}
+<br />
+<hr />
+
+{% for comment in comments %}
+<hr />
+<h7>{{ comment.date }}</h7>
+<h5>{{ comment.author }}</h5>
+<p>{{ comment.text|linebreaksbr }}</p>
+{% endfor %}
+
 <p><a href="{% url 'blog' %}">Назад</a></p>
 {%endblock%}

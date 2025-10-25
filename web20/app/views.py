@@ -6,9 +6,10 @@ from datetime import datetime
 from django.shortcuts import render, redirect
 from django.http import HttpRequest
 from django.contrib.auth.forms import UserCreationForm
-from .forms import *
 from django.db import models
-from .models import *
+from .models import Blog, Comment
+from .forms import  CommentForm
+
 
 def registration(request):
     """Renders the registration page."""
@@ -129,11 +130,27 @@ def blogpost (request,parametr):
 
     assert isinstance(request, HttpRequest)
     post_1 = Blog.objects.get(id=parametr)
+    comments = Comment.objects.filter(post=parametr)
+
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment_f = form.save(commit=False)
+            comment_f.author = request.user
+            comment_f.date = datetime.now()
+            comment_f.post = Blog.objects.get(id=parametr)
+            comment_f.save()
+            return redirect('blogpost', parametr=post_1.id)
+    else:
+        form = CommentForm()
+
     return render(
         request,
         'app/blogpost.html',
         {
             'post_1':post_1,
+            'comments' : comments,
+            'form' : form,
             'year': datetime.now().year,
         }
         )

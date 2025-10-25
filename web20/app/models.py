@@ -4,7 +4,9 @@ Definition of models.
 
 from django.db import models
 from django.contrib import admin
+from django.contrib.auth.models import User
 from datetime import datetime
+from django.forms import DateTimeField
 from django.urls import reverse
 
 # Create your models here.
@@ -32,4 +34,20 @@ class Blog(models.Model):
         verbose_name_plural = "статьи блога"
 
 admin.site.register(Blog)
-    
+
+class Comment(models.Model):
+    text = models.TextField(verbose_name="Текст комментария")
+    date = models.DateTimeField(default=datetime.now(), db_index=True, verbose_name="Дата комментария")
+    author = models.ForeignKey(User , on_delete = models.CASCADE, verbose_name="Автор комментария")
+    post = models.ForeignKey(Blog, on_delete = models.CASCADE, verbose_name="Статья комментария")
+
+    def __str__(self):
+        return 'Комментарий $d %s к %s' % (self.id, self.author, self.post)
+
+    class Meta:
+        db_table = "Comment" 
+        ordering = ["-date"]
+        verbose_name = "Комментарий к статье блога"
+        verbose_name_plural = "Комментарии к статье блога"
+   
+admin.site.register(Comment)    
