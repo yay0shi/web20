@@ -2,19 +2,23 @@
 
 {% block content %}
 
-<h2>{{ title }}.</h2>
-<h3>{{ message }}</h3>
+<h2 class="fade-in">{{ title }}.</h2>
+<h3 class="fade-in">{{ message }}</h3>
 
-<address>
-    Фирма<br />
-    Улица, дом<br />
-    <abbr title="телефон">P:</abbr>
-    425.555.0100
-</address>
+<div class="card form-container fade-in">
+    <div class="card-body">
+        <address>
+            Фирма<br />
+            Улица, дом<br />
+            <abbr title="телефон">P:</abbr>
+            425.555.0100
+        </address>
 
-<address>
-    <strong>Техническая поддержка:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Отдел маркетинга:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+        <address>
+            <strong>Техническая поддержка:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+            <strong>Отдел маркетинга:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+        </address>
+    </div>
+</div>
 
 {% endblock %}

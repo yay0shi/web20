@@ -3,20 +3,22 @@
 <h2>{{post_1.title}}</h2>
 
 {% if post_1.image and post_1.image.url != '/media/temp.jpg' %}
-<img src="{{ post_1.image.url }}" alt="Картинка статьи" width="800" />
+<img src="{{ post_1.image.url }}" alt="Картинка статьи" width="800" class="article-image" />
 {% endif %}
 
-<p>{{post_1.content|linebreaksbr}}</p>
+<p class="article-content">{{post_1.content|linebreaksbr}}</p>
 
 {% if user.is_authenticated %}
-<h3>Добавить комментарий</h3>
-<form method="POST">
-    {% csrf_token %}    {# защита от атак CSRF #}
-    <div>
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Отправить комментарий</button>
-    </div>
-</form>
+<div class="comment-section fade-in">
+    <h3>Добавить комментарий</h3>
+    <form method="POST">
+        {% csrf_token %}
+        <div>
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-primary">Отправить комментарий</button>
+        </div>
+    </form>
+</div>
 {% else %}
 <h3>Чтобы оставить комментарий, Войдите или Зарегистрируйтесь</h3>
 {% endif %}
@@ -24,11 +26,12 @@
 <hr />
 
 {% for comment in comments %}
-<hr />
-<h7>{{ comment.date }}</h7>
-<h5>{{ comment.author }}</h5>
-<p>{{ comment.text|linebreaksbr }}</p>
+<div class="comment fade-in">
+    <h7>{{ comment.date }}</h7>
+    <h5>{{ comment.author }}</h5>
+    <p>{{ comment.text|linebreaksbr }}</p>
+</div>
 {% endfor %}
 
-<p><a href="{% url 'blog' %}">Назад</a></p>
+<p><a href="{% url 'blog' %}" class="btn btn-primary">Назад</a></p>
 {%endblock%}

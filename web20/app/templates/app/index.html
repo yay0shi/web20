@@ -2,31 +2,41 @@
 
 {% block content %}
 
-<div class="jumbotron">
-    <h1>Django</h1>
-    <p class="lead">Django is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://www.djangoproject.com/" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+<div class="jumbotron bg-dark text-white rounded p-5 mb-4 fade-in">
+    <h1 class="display-4">🎮 Игровой Блог</h1>
+    <p class="lead">Лучшие обзоры игр, геймплей и новости игровой индустрии</p>
+    <hr class="my-4">
+    <p>Присоединяйтесь к нашему сообществу геймеров!</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'blog' %}">Читать обзоры</a>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            Django gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://djangobook.com/django-tutorials/">Learn more &raquo;</a></p>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm feature-card fade-in">
+            <div class="card-body">
+                <h4 class="card-title">🎯 Обзоры игр</h4>
+                <p class="card-text">Честные и подробные обзоры последних игровых релизов.</p>
+                <a href="{% url 'blog' %}" class="btn btn-primary">Смотреть</a>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>The Python Package Index is a repository of software for the Python programming language.</p>
-        <p><a class="btn btn-default" href="https://pypi.org/">Learn more &raquo;</a></p>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm feature-card fade-in">
+            <div class="card-body">
+                <h4 class="card-title">🎥 Видео</h4>
+                <p class="card-text">Геймплей, прохождения и игровые моменты.</p>
+                <a href="{% url 'videopost' %}" class="btn btn-primary">Смотреть</a>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Microsoft Azure</h2>
-        <p>You can easily publish to Microsoft Azure using Visual Studio. Find out how you can host your application using a free trial today.</p>
-        <p><a class="btn btn-default" href="http://azure.microsoft.com">Learn more &raquo;</a></p>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm feature-card fade-in">
+            <div class="card-body">
+                <h4 class="card-title">📊 Опросы</h4>
+                <p class="card-text">Прими участие в опросах и вырази своё мнение.</p>
+                <a href="{% url 'anketa' %}" class="btn btn-primary">Участвовать</a>
+            </div>
+        </div>
     </div>
 </div>
 

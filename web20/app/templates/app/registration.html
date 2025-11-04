@@ -1,13 +1,14 @@
 ﻿{% extends "app/layout.html" %}
 
 {% block content %}
-<h2>Регистрация пользователя</h2>
+<div class="auth-form fade-in">
+    <h2>Регистрация пользователя</h2>
     <form method="POST">
         {% csrf_token %}
         <div>
             {{ regform.as_p }}
-
-            <button type="submit" class="save btn btn-default">Зарегистрировать</button>
+            <button type="submit" class="save btn btn-primary btn-block">Зарегистрировать</button>
         </div>
     </form>
+</div>
 {% endblock %}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} - My Django Application</title>
+    <title>{{ title }} - Игровой Блог </title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
@@ -23,20 +23,20 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{% url 'home' %}">Главная</a></li>
-                    <li><a href="{% url 'about' %}">О нас</a></li>
-                    <li><a href="{% url 'contact' %}">Контакты</a></li>
-                    <li><a href="{% url 'anketa' %}">Анкета</a></li>
-                    <li><a href="{% url 'blog' %}">Блог</a></li>
+                    <li><a href="{% url 'home' %}" class="nav-link">🏠 Главная</a></li>
+                    <li><a href="{% url 'about' %}" class="nav-link">ℹ️ О нас</a></li>
+                    <li><a href="{% url 'contact' %}" class="nav-link">📞 Контакты</a></li>
+                    <li><a href="{% url 'anketa' %}" class="nav-link">📊 Анкета</a></li>
+                    <li><a href="{% url 'blog' %}" class="nav-link">📝 Блог</a></li>
 
                     {% if user.is_superuser %}
-                    <li><a href="{% url 'newpost' %}">Добавить статью</a></li>
+                    <li><a href="{% url 'newpost' %}" class="nav-link">Добавить статью</a></li>
                     {% endif %}
 
-                    <li><a href="{% url 'videopost' %}">Видео</a></li>
+                    <li><a href="{% url 'videopost' %}" class="nav-link">Трейлеры</a></li>
 
                     {% if not user.is_authenticated %}
-                    <li><a href="{% url 'registration' %}">Регистрация</a></li>
+                    <li><a href="{% url 'registration' %}" class="nav-link">Регистрация</a></li>
                     {% endif %}
                 </ul>
                 {% include 'app/loginpartial.html' %}
@@ -48,7 +48,7 @@
 {% block content %}{% endblock %}
         <hr/>
         <footer>
-            <p>&copy; {{ year }} - My Django Application</p>
+            <p>&copy; {{ year }} - Игровой Блог. Все права защищены.</p>
         </footer>
     </div>
 

@@ -104,7 +104,8 @@ def anketa(request):
     return render(
         request,
         'app/anketa.html',
-        {
+        {   
+            'title': 'Анкета',
             'form': form,
             'data': data
         }
@@ -164,7 +165,7 @@ def newpost(request):
         if blogform.is_valid():
             blog_f = blogform.save(commit=False)
             blog_f.posted = datetime.now()
-            blog_f.author = request.user  # исправлено autor -> author
+            blog_f.author = request.user  
             blog_f.save()
 
             return redirect('blog')  # переадресация на страницу Блог после создания статьи
@@ -189,7 +190,7 @@ def videopost(request):
         request,
         'app/videopost.html',
         {
-            'title': 'Видео',  
+            'title': 'Свежие трейлеры',  
             'message': 'Наши видео материалы',
             'year': datetime.now().year,
         }

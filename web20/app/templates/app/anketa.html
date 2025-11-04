@@ -1,69 +1,121 @@
 ﻿{% extends "app/layout.html" %}
 {% block content %}
+
 {% if form != None %}
-<br>
-<h2> Отправьте пожалуйста заполненную анкету</h2>
-<br>
-<div>
-    <form method="post" id="anketaForm">
-        {% csrf_token %}
-        <label for="{{form.name.id_for_label}}">{{form.name.label }}:</label>
-        {{form.name }}<br><br>
-        <label for="{{form.city.id_for_label}}">{{form.city.label }}:</label>
-        {{form.city }}<br>
-        <label for="{{form.gender.id_for_label}}">{{form.gender.label }}:</label>
-        {{form.gender }}
-        <label for="{{form.job.id_for_label}}">{{form.job.label }}:</label>
-        {{form.job }}<br><br>
-        <label for="{{form.internet.id_for_label}}">{{form.internet.label }}:</label><br>
-        {{form.internet }}<br><br>
-        <label for="{{form.notice.id_for_label}}">{{form.notice.label }}:</label>
-        {{form.notice }}<br><br>
-        <label for="{{form.email.id_for_label}}">{{form.email.label }}:</label>
-        {{form.email }}<br><br>
-        <label for="{{form.message.id_for_label}}">{{form.message.label }}:</label><br>
-        {{form.message }}<br><br>
-        <input type="submit" value="Отправить" id="submitBtn">
-    </form>
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">📝 Анкета геймера</h3>
+            </div>
+            <div class="card-body">
+                <p class="text-muted mb-4">Поделитесь информацией о себе и своих игровых предпочтениях</p>
+
+                <form method="post" id="anketaForm">
+                    {% csrf_token %}
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">{{form.name.label}}:</label>
+                            {{form.name}}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">{{form.city.label}}:</label>
+                            {{form.city}}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">{{form.job.label}}:</label>
+                        {{form.job}}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">{{form.gender.label}}:</label>
+                        <div class="mt-2">
+                            {{form.gender}}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">{{form.internet.label}}:</label>
+                        <div class="mt-2">
+                            {{form.internet}}
+                        </div>
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        {{form.notice}}
+                        <label class="form-check-label fw-bold">{{form.notice.label}}</label>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">{{form.email.label}}:</label>
+                        {{form.email}}
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">{{form.message.label}}:</label>
+                        {{form.message}}
+                    </div>
+
+                    <br>
+
+                    <div class="text-left">
+                        <input type="submit" value="🎮 Отправить анкету" id="submitBtn" class="btn btn-primary btn-lg">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
-<script>
-    const submitBtn = document.getElementById('submitBtn');
-    submitBtn.addEventListener('mouseover', function () {
-        this.style.color = 'red';
-    });
-    submitBtn.addEventListener('mouseout', function () {
-        this.style.color = '';
-    });
-
-
-    const inputFields = document.querySelectorAll('input[type="text"], input[type="email"], textarea');
-    inputFields.forEach(function (field) {
-        field.addEventListener('focus', function () {
-            this.style.backgroundColor = 'lightblue';
-        });
-        field.addEventListener('blur', function () {
-            this.style.backgroundColor = '';
-        });
-    });
-</script>
 {% else %}
-<br>
-<h2>Благодарим за предоставленную информацию! </h2>
-<h3>Вы сообщили о себе следующее:</h3>
-<ul>
-    <li><span>Имя: </span> {{data.name}}</li>
-    <li><span>Город:</span> {{data.city}}</li>
-    <li><span>Пол: </span> {{data.gender}}</li>
-    <li><span>Работа:</span> {{data.job}}</li>
-    <li><span>В интернете:</span> {{data.internet}}</li>
-    <li>
-        <span>Получать новости сайта на e-mail:</span>
-        {{data.notice}}
-    </li>
-    <li><span>Baш e-mail: </span> {{data.email}}</li>
-    <li><span>Информация о себе: </span> {{data.message}}</li>
-</ul>
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                <h3 class="mb-0">✅ Спасибо за участие!</h3>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-success">
+                    <h4>Благодарим за предоставленную информацию!</h4>
+                    <p class="mb-0">Вы сообщили о себе следующее:</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-group">
+                            <li class="list-group-item"><strong>👤 Имя:</strong> {{data.name}}</li>
+                            <li class="list-group-item"><strong>🏙️ Город:</strong> {{data.city}}</li>
+                            <li class="list-group-item"><strong>⚧ Пол:</strong> {{data.gender}}</li>
+                            <li class="list-group-item"><strong>💼 Работа:</strong> {{data.job}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-group">
+                            <li class="list-group-item"><strong>🌐 В интернете:</strong> {{data.internet}}</li>
+                            <li class="list-group-item"><strong>📧 Получать новости:</strong> {{data.notice}}</li>
+                            <li class="list-group-item"><strong>📨 E-mail:</strong> {{data.email}}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <h5>📖 Информация о себе:</h5>
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">{{data.message}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <a href="{% url 'home' %}" class="btn btn-primary">Вернуться на главную</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endif %}
+
 {% endblock %}
-
-

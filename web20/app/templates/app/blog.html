@@ -4,12 +4,11 @@
 <br>
 {%for post in posts%}
 <hr>
-<div class="">
+<div class="blog-post fade-in">
     <h2>{{post.title}}</h2>
     <h4>{{post.posted}} </h4>
     <p>{{post.description}}</p>
-    <p> <a href="{% url 'blogpost' parametr=post.id %}"> Читать Далее </a> </p>
+    <p> <a href="{% url 'blogpost' parametr=post.id %}" class="btn btn-primary"> Читать Далее </a> </p>
 </div>
 {%endfor%}
 {%endblock%}
-

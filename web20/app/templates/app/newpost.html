@@ -2,12 +2,12 @@
 
 {% block content %}
 
-<h3>Добавить статью</h3>
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %} 
+<h3 class="fade-in">Добавить статью</h3>
+<form method="POST" enctype="multipart/form-data" class="form-container fade-in">
+    {% csrf_token %}
     <div>
         {{ blogform.as_p }}
-        <button type="submit" class="save btn btn-default">Сохранить статью</button>
+        <button type="submit" class="save btn btn-primary btn-lg">Сохранить статью</button>
     </div>
 </form>
 

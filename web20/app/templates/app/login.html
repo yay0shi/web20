@@ -2,10 +2,10 @@
 
 {% block content %}
 
-<h2>{{ title }}</h2>
+<h2 class="fade-in">{{ title }}</h2>
 <div class="row">
     <div class="col-md-8">
-        <section id="loginForm">
+        <section id="loginForm" class="auth-form fade-in">
             <form action="." method="post" class="form-horizontal">
                 {% csrf_token %}
                 <h4>Использовать существующий аккаунт чтобы войти.</h4>
@@ -25,7 +25,7 @@
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="hidden" name="next" value="/" />
-                        <input type="submit" value="Войти" class="btn btn-default" />
+                        <input type="submit" value="Войти" class="btn btn-primary btn-block" />
                     </div>
                 </div>
                 {% if form.errors %}
