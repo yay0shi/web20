@@ -42,7 +42,7 @@ input[type="checkbox"].input-validation-error {
     display: none;
 }
 
-/*  ОБЩИЕ СТИЛИ  */
+/* общие стили */
 .card {
     transition: transform 0.2s ease-in-out;
 }
@@ -87,7 +87,7 @@ input[type="checkbox"].input-validation-error {
     color: white;
 }
 
-/*  СТИЛИ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ */
+/* главная страница */
 .jumbotron {
     color: white;
     background: linear-gradient(135deg, maroon 0%, #600000 100%) !important;
@@ -107,7 +107,7 @@ input[type="checkbox"].input-validation-error {
         color: maroon;
     }
 
-/*  СТИЛИ ДЛЯ БЛОГА - ИСПРАВЛЕНА ЧИТАЕМОСТЬ */
+/*  блог */
 .blog-post {
     background: white;
     border-radius: 10px;
@@ -151,7 +151,7 @@ input[type="checkbox"].input-validation-error {
         transform: translateX(5px);
     }
 
-/*  СТИЛИ ДЛЯ СТАТЬИ БЛОГА - ИСПРАВЛЕНА ЧИТАЕМОСТЬ */
+/*  статья блога */
 .article-content {
     line-height: 1.8;
     font-size: 1.1em;
@@ -193,7 +193,7 @@ input[type="checkbox"].input-validation-error {
         color: #333;
     }
 
-/*  СТИЛИ ДЛЯ ФОРМ  */
+/*  формы  */
 .form-container {
     background: white;
     border-radius: 15px;
@@ -219,12 +219,12 @@ input[type="checkbox"].input-validation-error {
         box-shadow: 0 0 0 0.2rem rgba(128, 0, 0, 0.25);
     }
 
-/* Стили для радио-кнопок в анкете */
+/* отступ для кнопки в анкете */
 input[type="radio"] {
     margin-right: 8px;
 }
 
-/*  СТИЛИ ДЛЯ АНКЕТЫ  */
+/*  анкета  */
 .anketa-card {
     border: none;
     border-radius: 20px;
@@ -248,7 +248,7 @@ input[type="radio"] {
         color: maroon;
     }
 
-/*  СТИЛИ ДЛЯ НАВИГАЦИИ  */
+/* навигация  */
 .navbar-brand img {
     border-radius: 5px;
 }
@@ -300,12 +300,12 @@ input[type="radio"] {
         border-color: rgba(255, 255, 255, 0.1);
     }
 
-/*  СТИЛИ ДЛЯ ВИДЕО КАРУСЕЛИ */
+/*  стили для карусели */
 .responsive-video {
     width: 100%;
     max-width: 800px;
-    height: auto; /* Автоматическая высота */
-    max-height: 500px; /* Максимальная высота */
+    height: auto; 
+    max-height: 500px; 
     border-radius: 12px;
     box-shadow: 0 8px 25px rgba(128, 0, 0, 0.15);
 }
@@ -367,7 +367,7 @@ input[type="radio"] {
         opacity: 1;
     }
 
-/* Индикаторы */
+/* индикаторы для карусели */
 .carousel-indicators {
     bottom: -50px;
 }
@@ -389,7 +389,7 @@ input[type="radio"] {
         transform: scale(1.2);
     }
 
-/*  СТИЛИ ДЛЯ РЕГИСТРАЦИИ И ЛОГИНА  */
+/* регистрация и логин */
 .auth-form {
     max-width: 400px;
     margin: 0 auto;
@@ -405,7 +405,7 @@ input[type="radio"] {
         margin-bottom: 20px;
     }
 
-/*СТИЛИ ДЛЯ ФУТЕРА*/
+/* футер */
 footer {
     margin-top: 50px;
     padding: 20px 0;
